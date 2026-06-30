@@ -43,6 +43,7 @@ openclaw plugins install --link ./openclaw-thread-context
 Verify:
 
 ```bash
+mkdir ~./openclaw/thread-context
 openclaw plugins list --enabled
 openclaw plugins inspect openclaw-thread-context --runtime --json
 ```
@@ -53,7 +54,7 @@ You can configure the plugin using the OpenClaw CLI for idempotent updates:
 
 ```bash
 openclaw config set 'plugins.entries.openclaw-thread-context.enabled' true
-openclaw config set 'plugins.entries.openclaw-thread-context.config.contextDir' "/var/lib/openclaw/thread-context"
+openclaw config set 'plugins.entries.openclaw-thread-context.config.contextDir' "./thread-context"
 openclaw config set 'plugins.entries.openclaw-thread-context.config.useChannelSubFolder' true
 openclaw config validate
 openclaw gateway restart
@@ -68,7 +69,7 @@ This will produce an entry in your configuration file that looks like this:
       "openclaw-thread-context": {
         "enabled": true,
         "config": {
-          "contextDir": "/var/lib/openclaw/thread-context",  // relative paths resolve against workspaceDir
+          "contextDir": "~/.openclaw/thread-context",  // relative paths resolve against workspaceDir
           "useChannelSubFolder": true                        // per-thread files under <contextDir>/<channelId>/
         }
       }

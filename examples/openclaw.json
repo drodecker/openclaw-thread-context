@@ -1,0 +1,17 @@
+{
+  plugins: {
+    entries: {
+      "openclaw-thread-context": {
+        // Resolved config is injected per-handler as ctx.pluginConfig in the
+        // before_prompt_build hook. No contextEngine slot is used.
+        enabled: true,
+        contextDir: "/var/lib/openclaw/thread-context",
+        useChannelSubFolder: true,
+
+        // Optional. Prompt-mutating hooks are honored by default; set this to
+        // false only if you want to disable this plugin's system-prompt append.
+        // hooks: { allowPromptInjection: true },
+      },
+    },
+  },
+}

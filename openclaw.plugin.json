@@ -1,0 +1,28 @@
+{
+  "id": "openclaw-thread-context",
+  "name": "OpenClaw Thread Context",
+  "description": "Appends per-Slack-thread context to the system prompt via the before_prompt_build hook.",
+  "activation": {
+    "onStartup": true
+  },
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "enabled": {
+        "type": "boolean",
+        "default": false,
+        "description": "Master toggle. When false the engine behaves identically to legacy (no system-prompt addition)."
+      },
+      "contextDir": {
+        "type": "string",
+        "description": "Directory holding per-thread context files (slack-thread-<thread_ts>.json) and/or threads.json. Relative paths resolve against the workspace dir."
+      },
+      "useChannelSubFolder": {
+        "type": "boolean",
+        "default": false,
+        "description": "When true, per-thread files are read from <contextDir>/<channelId>/ instead of directly under <contextDir>."
+      }
+    }
+  }
+}

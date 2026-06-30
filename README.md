@@ -29,11 +29,11 @@ match → the hook does nothing and the run is unchanged.
 ## Install
 
 ```bash
-# from your own published repo (recommended)
-openclaw plugins install git:github.com/<you>/openclaw-thread-context@v0.1.0
+# from this repository
+openclaw plugins install git:github.com/drodecker/openclaw-thread-context@v0.1.0
 
 # or local dev checkout
-git clone https://github.com/<you>/openclaw-thread-context
+git clone https://github.com/drodecker/openclaw-thread-context
 openclaw plugins install --link ./openclaw-thread-context
 ```
 

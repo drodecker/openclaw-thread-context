@@ -5,7 +5,7 @@
         // Resolved config is injected per-handler as ctx.pluginConfig in the
         // before_prompt_build hook. No contextEngine slot is used.
         enabled: true,
-        contextDir: "/var/lib/openclaw/thread-context",
+        contextDir: "~/.openclaw/thread-context",
         useChannelSubFolder: true,
 
         // Optional. Prompt-mutating hooks are honored by default; set this to

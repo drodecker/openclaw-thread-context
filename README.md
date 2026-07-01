@@ -94,12 +94,22 @@ Prompt-mutating hooks are honored by default; set
 }
 ```
 
-A record may also set `workspacePath` (absolute dir) + optional `files` to have the plugin read
-files off disk (default `AGENTS.md`, `IDENTITY.md`, `USER.md`, `THREAD.md`) and render them as
-`### <file>` sections. `workspacePath` content and `additionalContext` are **supplemental, not
-exclusive** — when both are present they're concatenated (workspace files first, then
-`additionalContext`); when only one is present, that one is used as-is. See DESIGN.md for the
-full merge rules.
+**Optional workspace files** — a record may also set `workspacePath` (absolute dir) + optional
+`files` (default `AGENTS.md`, `IDENTITY.md`, `USER.md`, `THREAD.md`) to have the plugin read
+those files fresh each turn and render them as `### <file>` sections. This is **supplemental to
+`additionalContext`, not exclusive** — when both are set they're concatenated (workspace files
+first, then `additionalContext` last); when only one is set, that one is used as-is:
+
+```json
+{
+  "threadId": "1782413062.538549",
+  "workspacePath": "/root/.openclaw/workspaces/profile_124955",
+  "additionalContext": "Lead: Jane Doe, wants a callback.",
+  "generatedAt": "2026-06-29T18:22:00-06:00"
+}
+```
+
+See [`DESIGN.md`](./DESIGN.md) for the full merge rules.
 
 **Fallback `threads.json`** — an array of the same records. Looked up in the channel subfolder
 first, then `<contextDir>` root. The per-thread file always wins (a direct read vs. scanning an

@@ -94,6 +94,13 @@ Prompt-mutating hooks are honored by default; set
 }
 ```
 
+A record may also set `workspacePath` (absolute dir) + optional `files` to have the plugin read
+files off disk (default `AGENTS.md`, `IDENTITY.md`, `USER.md`, `THREAD.md`) and render them as
+`### <file>` sections. `workspacePath` content and `additionalContext` are **supplemental, not
+exclusive** — when both are present they're concatenated (workspace files first, then
+`additionalContext`); when only one is present, that one is used as-is. See DESIGN.md for the
+full merge rules.
+
 **Fallback `threads.json`** — an array of the same records. Looked up in the channel subfolder
 first, then `<contextDir>` root. The per-thread file always wins (a direct read vs. scanning an
 array); `threads.json` is parsed once and cached by mtime.
